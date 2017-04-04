@@ -57,7 +57,7 @@ class HistoryController extends Application
         $this->sort = $this->session->userdata('sort');
 
         //Gets the history table from the database
-        $source = $this->history->all(); //get all the history
+        $source = $this->history->all($this->sort); //get all the history
         $history = array();
         $index = 0;
         $count = 0;
