@@ -42,9 +42,6 @@ class AssemblyController extends Application
             }
         }
         
-        //get all parts
-        //$parts = $this->parts->all();
-        //get all robots
         //assembly the single parts tp a parser
         foreach ($parts as $part) {
             if ($part->piece == 1) {

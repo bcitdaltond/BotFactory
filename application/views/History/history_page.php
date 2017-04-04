@@ -2,8 +2,6 @@
 <script>
     window.onload = function () {
         {sort_script}
-        {filterModel_script}
-        {filterSeries_script}
     };
 </script>
 <br><br>

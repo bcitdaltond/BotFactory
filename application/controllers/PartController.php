@@ -123,9 +123,7 @@ class PartController extends Application
                 // insert into database
                 $this->parts->add($p);
             }
-
-            echo 'Built ' . $size . ' parts';
-
+            
             $record = array('category' => 'Build', 'description' => 'Built ' . $size . ' parts');
 
             // Update history table
