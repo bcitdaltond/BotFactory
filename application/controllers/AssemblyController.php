@@ -4,8 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AssemblyController extends Application
 {
-
-
+    // Constructor
     function __construct()
     {
         parent::__construct();
@@ -20,14 +19,15 @@ class AssemblyController extends Application
         $torso = array();
         $bottom = array();
 
-
         /**
          * set roles
          */
         $role = $this->session->userdata('userrole');
+
+        // checks the role and redirects to homepage if it's insufficient permissions
         if ($role == ROLE_GUEST || $role == ROLE_WORKER) redirect('/home');
 
-        $this->data['pagetitle'] = 'BotFactory - Assembly (' . $role . ')';
+        $this->data['pagetitle'] = 'Assembly (' . $role . ')';
 
         $this->data['pagebody'] = 'Assembly/assembly';
 
@@ -41,11 +41,7 @@ class AssemblyController extends Application
                 $parts[] = $part;
             }
         }
-        //get all parts
-        //$parts = $this->parts->all();
-        //get all robots
-
-
+        
         //assembly the single parts tp a parser
         foreach ($parts as $part) {
             if ($part->piece == 1) {
@@ -56,7 +52,6 @@ class AssemblyController extends Application
                 $bottom[] = $this->parser->parse('Assembly/_singlePart', (array)$part, true);
             }
         }
-
 
         //create a html table to display the robot
         $this->load->library('table');
@@ -90,13 +85,6 @@ class AssemblyController extends Application
             $this->data['tableBottom'] = "<h3 style='text-align: center'>No Bottom Parts</h3>";
         }
 
-//        $this->table->set_caption('Assembled Robots');
-//        if (!empty($cellsForRobots)) {
-//            $rows = $this->table->make_columns($cellsForRobots, 3);
-//            $this->data['tableRobots'] = $this->table->generate($rows);
-//        } else {
-//            $this->data['tableRobots'] = "<h3 style='text-align: center'>No Robots</h3>";
-//        }
         $this->render();
     }
 
@@ -200,9 +188,8 @@ class AssemblyController extends Application
                 redirect(base_url("/register"));
                 return;
             }
+
             // if the token doesn't work
-
-
             if (!empty($partsReturn)) {
                 foreach ($partsReturn as $part) {
                     $parts[] = $this->parts->get($part);
@@ -211,9 +198,8 @@ class AssemblyController extends Application
                 $this->errorMessage("Select at least one part to return");
                 return;
             }
+
             //get parts selected
-
-
             foreach ($parts as $part) {
                 $returnUrl = $url . "/" . $part->CA_code . "?key=" . $token;
                 $response = file_get_contents($returnUrl);
@@ -238,11 +224,8 @@ class AssemblyController extends Application
                 }
             }
             $this->errorMessage("Successful Returned");
-
-
         }
     }
-
 
     /**
      * message helper class to show messages
@@ -275,5 +258,4 @@ class AssemblyController extends Application
             $this->parts->update($updatePart);
         }
     }
-
 }

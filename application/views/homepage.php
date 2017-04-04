@@ -12,7 +12,7 @@
 	                                    <i class="fa fa-credit-card fa-5x"></i>
 	                                </div>
 	                                <div class="col-xs-9 text-right">
-	                                    <div class="huge">2000</div>
+	                                    <div class="huge">{total}</div>
 	                                    <div>Current money</div>
 	                                </div>
 	                            </div>
@@ -78,7 +78,7 @@
 	                                </div>
 	                                <div class="col-xs-9 text-right">
 	                                    <div class="huge">{robots}</div>
-	                                    <div>Robots assembled </div>
+	                                    <div>Robots assembled</div>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -86,16 +86,15 @@
 	                </div>
 	            </div>
             </div>
+            <br><br>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
-                                   
+                    <div class="panel panel-default">        
                     </div>
                 </div>
             </div>
-
 			<p> This bot factory are made by <strong>Umbrella Corporation</strong> for building cute household robots.</p>
-			<p> This new project are coordinated at our new Panda Research Center. </p>
+			<p> This new project are coordinated at our new Panda Research Center.</p>
 			<p> We are dedicated to outsourcing the best and high quality robot assembly to anyone worldwide!</p>
 		</div>
 	</div>

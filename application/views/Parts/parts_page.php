@@ -1,14 +1,12 @@
 <h1>Parts</h1>
-
+<div align="center"><br>
 <form method="post" action="PartController/build">
-	<button class="btn btn-default">Build more parts</button>
-</form>
-
+	<button class="btn btn-secondary btn-lg">Build more parts</button>
+</form><br><br>
 <form method="post" action="PartController/buy">
-	<button class="btn btn-default">Buy parts</button>
-</form>
-
-<br>
+	<button class="btn btn-secondary btn-lg">Buy parts</button>
+</form><br><br>
+</div>
 
 <div class="row">
 	{parts}

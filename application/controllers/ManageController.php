@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ManageController extends Application
 {
+    // Constructor
     function __construct()
     {
         parent::__construct();
@@ -22,20 +23,26 @@ class ManageController extends Application
     public function index()
     {
         $cellsForRobots = array();
-        // set all the data parameters
+        
         $role = $this->session->userdata('userrole');
 
+        $this->data['pagetitle'] = 'Manage (' . $role . ')';
+
+        // checks the role and redirects to homepage if it's insufficient permissions
+        if ($role != ROLE_BOSS) redirect('/home');
+
+        // hides the message if there is no success/faliure message
         $this->session->userdata('message', null);
         $this->session->userdata('message_buy', null);
         $this->session->userdata('message_reboot', null);
 
-
-        $this->data['pagetitle'] = 'BotFactory - Manage (' . $role . ')';
+        // sets the message to a success/faliure message
         $this->data['message'] = $this->session->userdata('message');
         $this->data['message_buy'] = $this->session->userdata('message_buy');
         $this->data['message_reboot'] = $this->session->userdata('message_reboot');
 
         $robots = $this->robots->all();
+
         //use the parser to build a robot
         foreach ($robots as $robot) {
             if ($robot->topPardId == $robot->torsoPartId &&
@@ -47,7 +54,7 @@ class ManageController extends Application
             }
         }
 
-        //create a html table to display the robot
+        // create a html table to display the robot
         $this->load->library('table');
         $template = array(
             'table_open' => '<table class="theTable">',
@@ -55,7 +62,7 @@ class ManageController extends Application
             'table_close' => '</table>'
         );
 
-        //set the parser configure and parameters
+        // set the parser configure and parameters
         $this->table->set_template($template);
 
         $this->table->set_caption('Assembled Robots');
@@ -78,7 +85,6 @@ class ManageController extends Application
      */
     public function registerme()
     {
-
         $this->data['pagebody'] = 'Manage/manage';
 
         $password = $this->input->post('password');
@@ -95,13 +101,14 @@ class ManageController extends Application
 
         $response = explode(" ", $response);
 
-
         if ($response[0] == "Ok") {
             $this->session->set_userdata('message', "Successfully Registered!");
+            
             //get the token and store it into database
             $token = $response[1];
             $db_token = $this->properties->create();
             $property = $this->properties->all();
+            
             //if no token
             if(sizeof($property) == 0){
                 $db_token->token = $token;
@@ -115,7 +122,6 @@ class ManageController extends Application
             }
             $referred_from = $this->session->userdata('referred_from');
             redirect($referred_from, 'refresh');
-
         } else {
             $referred_from = $this->session->userdata('referred_from');
             $this->session->set_userdata('message', "Oops: Bad password!");
@@ -128,26 +134,24 @@ class ManageController extends Application
      */
     public function rebootme()
     {
-
         $this->data['pagebody'] = 'Manage/manage';
         $this->session->set_userdata('message_reboot', null);
-
 
         $current_token = $this->properties->head(1);
         $token = $current_token[0]->token;
 
         $response = file_get_contents("http://umbrella.jlparry.com/work/rebootme/apple?key=" . $token);
-        if ($token == null) {
+        if ($token == null) { // if no existing token
             $this->session->set_userdata('message_reboot', "Please register first!");
             $referred_from = $this->session->userdata('referred_from');
             redirect($referred_from, 'refresh');
         }
 
-        if ($response == "Oops: I don't recognize you!") {
+        if ($response == "Oops: I don't recognize you!") { // if password/token is incorrect 
             $this->session->set_userdata('message_reboot', "Token expired, Please register first!");
             $referred_from = $this->session->userdata('referred_from');
             redirect($referred_from, 'refresh');
-        } else {
+        } else { // if password/token is correct, clears the password file and database.
             unlink("password.txt");
             $this->clearDatabase();
             $referred_from = $this->session->userdata('referred_from');
@@ -178,8 +182,6 @@ class ManageController extends Application
         foreach ($this->properties->all() as $property){
             $this->properties->delete($property->id);
         }
-
-
     }
 
     /*
@@ -187,7 +189,6 @@ class ManageController extends Application
      */
     public function ship()
     {
-
         if (isset($_POST['robotCheck']) && !empty($_POST['robotCheck'])) {
             $robotsID = $this->input->post('robotCheck');
             $robots = array();
@@ -217,9 +218,11 @@ class ManageController extends Application
                 $shipUrl = $url . "/" . $robot->topCode . "/" . $robot->torsoCode . "/" . $robot->bottomCode . "?key=" . $token;
                 $response = file_get_contents($shipUrl);
                 $responseArray = explode(" ", $response);
+                
                 // success to sell
                 if ($responseArray[0] == "Ok") {
                     $amount = $responseArray[1];
+
                     //delete robots on database
                     $this->robots->delete($robot->robotID);
 
@@ -233,20 +236,24 @@ class ManageController extends Application
                 } else {
                     // if i do this it will show the message?
                     $this->showMessage(implode(" ", $responseArray));
+                    
                     //$this->errorMessage(implode(" ", $responseArray));
                     return;
                 }
             }
             $this->showMessage($responseArray[0]);
         } else {
-            $this->showMessage("No robot selected");
+            $this->showMessage("Please select a robot.");
         }
     }
 
-
+    /*
+    *   Custom function to display messages
+    */
     public function showMessage($message)
     {
         $role = $this->session->userdata('userrole');
+
         if ($role == ROLE_GUEST || $role == ROLE_WORKER || $role == ROLE_SUPERVISOR) redirect('/home');
         switch ($role) {
             case ROLE_GUEST:
@@ -267,5 +274,4 @@ class ManageController extends Application
         $this->data['message'] = $message;
         $this->render();
     }
-
 }

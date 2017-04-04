@@ -1,9 +1,6 @@
 <?php
 class History extends MY_Model
 {
-    // table values
-    // transactionId | customer | stamp | category | price | description | partId | model | series
-
 	// Constructor
 	function __construct()
 	{
@@ -34,9 +31,9 @@ class History extends MY_Model
 		$moneySpent = 0;
 		foreach ($this->all() as $record)
 		{
-			
-			$moneySpent += $record->amount;
-			
+			if ($record->amount < 0){
+				$moneySpent -= $record->amount;
+			}
 		}
 		return $moneySpent;
 	}
@@ -47,22 +44,12 @@ class History extends MY_Model
 		$moneyEarned = 0;
 		foreach ($this->all() as $record)
 		{
-			
-			$moneyEarned += $record->amount;
-			
+			if ($record->amount > 0){
+				$moneyEarned += $record->amount;
+			}
 		}
 		return $moneyEarned;
 	}
-
-    //Add a record to the history table
-//    public function add($record) {
-//    	$transaction = $this->create();
-//    	$transaction->category = $record['category'];
-//    	$transaction->description = $record['description'];
-//    	$transaction->stamp = date('Y-m-d H:i:s', time());
-//
-//    	$this->add($transaction);
-//    }
 
     //Remove all records inside the history table
     public function deleteAll() {

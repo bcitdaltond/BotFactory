@@ -1,7 +1,5 @@
 <h1>Robot</h1>
-
 <div class="container">
-
     <div class="col-xs-6">
         <img class="img-responsive" src="/pix/robots/{topPardId}.jpg">
         <img class="img-responsive" src="/pix/robots/{torsoPartId}.jpg">
@@ -15,5 +13,4 @@
         <p>Cost: {cost}</p>
         <p>Assembled Date: {date}</p>
     </div>
-
 </div>

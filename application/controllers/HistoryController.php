@@ -5,13 +5,17 @@ class HistoryController extends Application
 {
     //Number of records that can be displayed
     private $items_per_page = 20;
+
     //Default history table sorting
     private $sort = "stamp";
+    
     //Default history table filter for models
     private $filter_model = "all";
+    
     //Default history table filter for model series
     private $filter_series = "all";
 
+    // Constructor
     function __construct()
     {
         parent::__construct();
@@ -34,11 +38,14 @@ class HistoryController extends Application
 
     //Allows multi-page views
     public function page($num = 1) {
+        
         //Determines if your current role type is allowed
         $role = $this->session->userdata('userrole');
+        
+        // checks the role and redirects to homepage if it's insufficient permissions
         if ($role != ROLE_BOSS) redirect('/home');
 
-        $this->data['pagetitle'] = 'BotFactory - History ('. $role . ')';
+        $this->data['pagetitle'] = 'History ('. $role . ')';
 
         //Determines if sort was specified on another page
         $sort = $this->input->post('order');
@@ -50,13 +57,12 @@ class HistoryController extends Application
         $this->sort = $this->session->userdata('sort');
 
         //Gets the history table from the database
-        $source = $this->history->all(); //get all the history
+        $source = $this->history->all($this->sort); //get all the history
         $history = array();
-
-        //
         $index = 0;
         $count = 0;
         $start = ($num - 1) * $this->items_per_page;
+
         foreach ($source as $record) {
             if ($index++ >= $start) {
                 
@@ -72,7 +78,6 @@ class HistoryController extends Application
             if ($count >= $this->items_per_page) break;
         }
         $this->data['pagination'] = $this->pagenav($num);
-
 
         //Sets the sort drop-down list to specified option
         $this->data['sort_script'] = '
@@ -96,6 +101,7 @@ class HistoryController extends Application
         $this->data['pagebody'] = 'History/history_page';
 
         $this->data['history'] = $history;
+
         $this->render();
     }
     
@@ -103,12 +109,14 @@ class HistoryController extends Application
     private function pagenav($num) {
         //Determines which page its currently on
         $lastpage = ceil($this->history->size() / $this->items_per_page);
+        
         $parms = array(
             'first' => 1,
             'previous' => (max($num-1,1)),
             'next' => min($num+1,$lastpage),
             'last' => $lastpage
         );
+        
         return $this->parser->parse('History/itemnav',$parms,true);
     }
 }
