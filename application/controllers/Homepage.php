@@ -26,7 +26,7 @@ class Homepage extends Application
             $this->session->set_userdata('userrole',ROLE_GUEST);
         }
 	    //set page title and view
-		$this->data['pagetitle'] = 'BotFactory - Homepage ('. $role . ')';
+		$this->data['pagetitle'] = 'Apple BotFactory - Homepage ('. $role . ')';
 
 
 		switch ($role) {

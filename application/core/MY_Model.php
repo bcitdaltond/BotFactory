@@ -212,7 +212,7 @@ class MY_Model extends CI_Model implements Data_mapper {
 			$data = $record;
 		}
 		// update the DB table appropriately
-		$key = $data[$this->_keyField];
+		//$key = $data[$this->_keyField];
 		$object = $this->db->insert($this->_tableName, $data);
 	}
 

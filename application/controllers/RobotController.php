@@ -65,15 +65,21 @@ class RobotController extends Application
         $this->data['pagebody'] = 'Robot/robots';
 
         $source = $this->robots->get($which);
+        $this->data['type'] = $source->type;
+        $this->data['topPardId'] = $source->topPardId;
+        $this->data['torsoPartId'] = $source->torsoPartId;
+        $this->data['bottomPartId'] = $source->bottomPartId;
+        $this->data['cost'] = $source->cost;
+        $this->data['date'] = $source->stamp;
 
-        $this->data['image'] = $source['image'];
-        $this->data['type'] = $source['type'];
-        $this->data['topPardId'] = $source['topPardId'];
-        $this->data['torsoPartId'] = $source['torsoPartId'];
-        $this->data['bottomPartId'] = $source['bottomPartId'];
-        $this->data['cost'] = $source['cost'];
-        $this->data['date'] = $source['assembleDate'];
+        if($source->topPardId == $source->torsoPartId &&
+            $source->torsoPartId== $source->bottomPartId){
+            $this->render();
+        }
+        else{
+            $this->data['pagebody'] = 'Robot/assRobot';
+            $this->render();
+        }
 
-        $this->render();
     }
 }

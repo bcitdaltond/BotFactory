@@ -1,15 +1,12 @@
     <h1>Assembly and Return</h1>
 
-    {tableTop}
-    {tableTorso}
-    {tableBottom}
-
-    <div class="buttons">
-        <button type="button" name="assembly"  class ="assembly">Assembly Your Own</button>
-        <button type="button" name="return" class = "return">Return to Us</button>
-    </div>
-    {tableRobots}
-    <div class="ship">
-        <button type="button" name="ship">Ship it Now</button>
-    </div>
+    <form method="post" action="AssemblyController/assemblyOrReturn">
+        {tableTop}
+        {tableTorso}
+        {tableBottom}
+        <div class="buttons">
+            <input type="submit" name="assembly" value="Assembly Your Own" />
+            <input type="submit" name="return" value="Return to Us" />
+        </div>
+    </form>
 
