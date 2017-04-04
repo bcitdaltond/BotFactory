@@ -16,6 +16,7 @@ Changelog format: Bottom to top (New to old).
 <h2>Version: </h2>
 Version | Release Date | Description  | Editor
 --- | --- | --- | ---
+*v2.15* | Apr 04, 2017 | SQL Data Dump /data. | `arnoldmyint`
 *v2.14* | Apr 02, 2017 | Tidy up all the loose ends. | `arnoldmyint`
 *v2.13* | Apr 02, 2017 | Fixed user role bugs. | `Arv91`
 *v2.12* | Apr 02, 2017 | Added Manage and Register controller and view page. | `wsyccc` & `arnoldmyint`
