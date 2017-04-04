@@ -26,21 +26,6 @@ class AboutController extends Application
 
 		$this->data['pagetitle'] = 'BotFactory - About ('. $role . ')';
 
-		switch ($role) {
-			case ROLE_GUEST:
-				$this->data['menubuttons'] = '_buttonsguest';
-		        break;
-		    case ROLE_WORKER:
-		        $this->data['menubuttons'] = '_buttonsworker';
-		        break;
-		    case ROLE_SUPERVISOR:
-		        $this->data['menubuttons'] = '_buttonssupervisor';
-		        break;
-		    case ROLE_BOSS:
-		        $this->data['menubuttons'] = '_buttonsboss';
-		        break;
-		}
-
 		$this->data['pagebody'] = 'About/about';
 
 		$this->data['logo'] = '/pix/icons/robot_logo.png';
