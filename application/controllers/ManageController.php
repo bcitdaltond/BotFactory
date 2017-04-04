@@ -35,21 +35,6 @@ class ManageController extends Application
         $this->data['message_buy'] = $this->session->userdata('message_buy');
         $this->data['message_reboot'] = $this->session->userdata('message_reboot');
 
-        switch ($role) {
-            case ROLE_GUEST:
-                $this->data['menubuttons'] = '_buttonsguest';
-                break;
-            case ROLE_WORKER:
-                $this->data['menubuttons'] = '_buttonsworker';
-                break;
-            case ROLE_SUPERVISOR:
-                $this->data['menubuttons'] = '_buttonssupervisor';
-                break;
-            case ROLE_BOSS:
-                $this->data['menubuttons'] = '_buttonsboss';
-                break;
-        }
-
         $robots = $this->robots->all();
         //use the parser to build a robot
         foreach ($robots as $robot) {

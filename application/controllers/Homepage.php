@@ -27,22 +27,6 @@ class Homepage extends Application
         }
 	    //set page title and view
 		$this->data['pagetitle'] = 'Apple BotFactory - Homepage ('. $role . ')';
-
-
-		switch ($role) {
-			case ROLE_GUEST:
-				$this->data['menubuttons'] = '_buttonsguest';
-		        break;
-		    case ROLE_WORKER:
-		        $this->data['menubuttons'] = '_buttonsworker';
-		        break;
-		    case ROLE_SUPERVISOR:
-		        $this->data['menubuttons'] = '_buttonssupervisor';
-		        break;
-		    case ROLE_BOSS:
-		        $this->data['menubuttons'] = '_buttonsboss';
-		        break;
-		}
 		
 		$this->data['pagebody'] = 'homepage' ;
 

@@ -6,25 +6,11 @@ class RegisterController extends Application
     {
 
         $role = $this->session->userdata('userrole');
-        switch ($role) {
-            case ROLE_GUEST:
-                $this->data['menubuttons'] = '_buttonsguest';
-                break;
-            case ROLE_WORKER:
-                $this->data['menubuttons'] = '_buttonsworker';
-                break;
-            case ROLE_SUPERVISOR:
-                $this->data['menubuttons'] = '_buttonssupervisor';
-                break;
-            case ROLE_BOSS:
-                $this->data['menubuttons'] = '_buttonsboss';
-                break;
-        }
-
-
 
         $this->data['pagetitle'] = "Register - BotFactory";
+
         $this->session->userdata('message', null);
+        
         $this->data['message'] = $this->session->userdata('message');
 
         $this->data['pagebody'] = 'Manage/register';

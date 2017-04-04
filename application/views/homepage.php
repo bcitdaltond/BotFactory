@@ -93,7 +93,6 @@
                     </div>
                 </div>
             </div>
-        
 
 			<p> This bot factory are made by <strong>Umbrella Corporation</strong> for building cute household robots.</p>
 			<p> This new project are coordinated at our new Panda Research Center. </p>

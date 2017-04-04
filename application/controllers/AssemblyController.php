@@ -29,21 +29,6 @@ class AssemblyController extends Application
 
         $this->data['pagetitle'] = 'BotFactory - Assembly (' . $role . ')';
 
-        switch ($role) {
-            case ROLE_GUEST:
-                $this->data['menubuttons'] = '_buttonsguest';
-                break;
-            case ROLE_WORKER:
-                $this->data['menubuttons'] = '_buttonsworker';
-                break;
-            case ROLE_SUPERVISOR:
-                $this->data['menubuttons'] = '_buttonssupervisor';
-                break;
-            case ROLE_BOSS:
-                $this->data['menubuttons'] = '_buttonsboss';
-                break;
-        }
-
         $this->data['pagebody'] = 'Assembly/assembly';
 
         $parts = array();
@@ -270,20 +255,6 @@ class AssemblyController extends Application
 
         $this->data['pagetitle'] = 'Assembly - Result (' . $role . ')';
 
-        switch ($role) {
-            case ROLE_GUEST:
-                $this->data['menubuttons'] = '_buttonsguest';
-                break;
-            case ROLE_WORKER:
-                $this->data['menubuttons'] = '_buttonsworker';
-                break;
-            case ROLE_SUPERVISOR:
-                $this->data['menubuttons'] = '_buttonssupervisor';
-                break;
-            case ROLE_BOSS:
-                $this->data['menubuttons'] = '_buttonsboss';
-                break;
-        }
         $this->data['error'] = $message;
         $this->data['pagebody'] = 'Assembly/result';
         $this->render();
