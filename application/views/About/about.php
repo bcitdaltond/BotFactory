@@ -1,6 +1,11 @@
+<head>
+           <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/4f6a4b08efdad6bb29f9cc801f5c07e263b39907/devicon.min.css">
+
+</head>
+
 <div class="jumbotron">
    <div>
-      <h1 id="homepage-title">BotFactory</h1>
+      <h1 id="homepage-title">Apple BotFactory</h1>
       <div class="homepage-content">
          <img src="{logo}" title = "robot_logo" class="center-block img-responsive">
          <h2>About Us</h2>
@@ -21,23 +26,23 @@
          <br>
          <p>
             Arnold M. (Team Captain)
-            <a href="http://github.com/arnoldmyint">Github</a>
+            <a href="http://github.com/arnoldmyint" class="devicon-github-plain colored" style="font-size: 30px"></a>
          </p>
          <p>
             Arvin R. (Team Member)
-            <a href="http://github.com/Arv91">Github</a>
+            <a href="http://github.com/Arv91" class="devicon-github-plain colored" style="font-size: 30px"></a>
          </p>
          <p>
             Jason L. (Team Member)
-            <a href="http://github.com/jasonlee97">Github</a> 
+            <a href="http://github.com/jasonlee97" class="devicon-github-plain colored" style="font-size: 30px"></a> 
          </p>
          <p>
             Dalton D. (Team Member)
-            <a href="http://github.com/bcitdaltond">Github</a>
+            <a href="http://github.com/bcitdaltond" class="devicon-github-plain colored" style="font-size: 30px"></a>
          </p>
          <p>
             Wayne W. (Team Member)
-            <a href="http://github.com/wsyccc">Github</a> 
+            <a href="http://github.com/wsyccc" class="devicon-github-plain colored" style="font-size: 30px"></a> 
          </p>
          <br> <br>
          <h2>Contact Us</h2>

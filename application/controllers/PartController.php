@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PartController extends Application
 {
+    // Constructor 
     function __construct()
     {
         parent::__construct();
@@ -15,18 +16,16 @@ class PartController extends Application
      * Maps to the following URL
      *        http://example.com/
      *    - or -
-     *        http://example.com/welcome/index
+     *        http://example.com/parts
      *
-     * So any other public methods not prefixed with an underscore will
-     * map to /welcome/<method_name>
-     * @see https://codeigniter.com/user_guide/general/urls.html
      */
     public function index()
     {
         $role = $this->session->userdata('userrole');
+        
+        // checks the role and redirects to homepage if it's insufficient permissions
         if ($role == ROLE_GUEST) redirect('/home');
 
-        // set page title and view
         $this->data['pagetitle'] = 'BotFactory - Parts (' . $role . ')';
 
         $this->data['pagebody'] = 'Parts/parts_page';
@@ -45,7 +44,6 @@ class PartController extends Application
      * @param $id the id we are using to allocate the item
      * set data to the model
      */
-
     public function details($id)
     {
         $role = $this->session->userdata('userrole');
@@ -79,7 +77,6 @@ class PartController extends Application
      */
     public function build()
     {
-
         //$properties = $this->properties->tail();
         if (sizeof($this->properties->all()) != 0) {
             $current_token = $this->properties->head(1);
@@ -88,9 +85,6 @@ class PartController extends Application
             redirect(base_url("/register"));
             return;
         }
-//        $current_token = $this->properties->head(1);
-//        $token = $current_token[0]->token;
-
 
         $parts_response = file_get_contents("http://umbrella.jlparry.com/work/mybuilds?key=" . $token);
         $built_parts = json_decode($parts_response, true);
@@ -115,6 +109,7 @@ class PartController extends Application
                 $p->piece = $part['piece'];
                 $p->plant = $part['plant'];
                 $p->stamp = $part['stamp'];
+                
                 // get line
                 if (preg_match("/^[a-lA-L]$/", $part['model'])) {
                     $p->line = "household";
@@ -134,13 +129,11 @@ class PartController extends Application
             $record = array('category' => 'Build', 'description' => 'Built ' . $size . ' parts');
 
             // Update history table
-
             $this->history->add($record);
             $referred_from = $this->session->userdata('referred_from');
             redirect($referred_from, 'refresh');
         }
         // return to original page
-
     }
 
     /**
@@ -157,18 +150,14 @@ class PartController extends Application
         }
 
         // if empty (e.g. no token)
-
-
-        // grab api key (token)
         if (file_get_contents("http://umbrella.jlparry.com/info/whoami?key=" . $token) != "apple"){
-            redirect(base_url("/register"));
+            redirect(base_url("/register")); // ask the user to grab api key (token)
             return;
         }
 
         $parts_response = file_get_contents("http://umbrella.jlparry.com/work/buybox?key=" . $token);
 
         $box_parts = json_decode($parts_response, true);
-
 
         if (is_array($box_parts)) {
             foreach ($box_parts as $part) {
@@ -180,6 +169,7 @@ class PartController extends Application
                 $p->plant = $part['plant'];
                 $p->stamp = $part['stamp'];
                 $p->piece = $part['piece'];
+                
                 // get line
                 if (preg_match("/^[a-lA-L]$/", $part['model'])) {
                     $p->line = "household";
@@ -192,14 +182,12 @@ class PartController extends Application
 
                 // insert into database
                 $this->parts->add($p);
-                $record = array('category' => 'Buy Box', 'description' => 'Buy a Box ', 'amount' => -100);
-
-                // Update history table
-
-                $this->history->add($record);
             }
+            // Add history record
+            $record = array('category' => 'Buy Box', 'description' => 'Buy a Box ', 'amount' => -100);
+            // update history table
+            $this->history->add($record);
         }
-
 
         // return to original page
         $referred_from = $this->session->userdata('referred_from');

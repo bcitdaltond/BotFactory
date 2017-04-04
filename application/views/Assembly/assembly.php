@@ -5,8 +5,7 @@
         {tableTorso}
         {tableBottom}
         <div class="buttons">
-            <input type="submit" name="assembly" value="Assembly Your Own" />
-            <input type="submit" name="return" value="Return to Us" />
+            <input type="submit" name="assembly" value="Assembly" class="btn btn-secondary btn-lg"/>
+            <input type="submit" name="return" value="Return to PRC" class="btn btn-secondary btn-lg"/>
         </div>
     </form>
-

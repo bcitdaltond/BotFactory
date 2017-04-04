@@ -7,5 +7,4 @@ class Parts extends MY_Model
 	{
 		parent::__construct('parts', 'partID');
 	}
-
 }

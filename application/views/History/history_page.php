@@ -1,3 +1,4 @@
+<br>
 <script>
     window.onload = function () {
         {sort_script}
@@ -5,13 +6,11 @@
         {filterSeries_script}
     };
 </script>
-
+<br><br>
 <h1>History View</h1>
 
 <div id="body">
-   <!--  transactionId | customerName | date | category | price | description | partId -->
     {pagination}
-
     <div class="col-xs-12 text-center">
         <form method="post" action="">
             <div class="col-sm-6">
@@ -21,11 +20,11 @@
                 </select>
             </div>
             <div class="col-sm-6">
-                <input class="btn" type="submit" value="Sort/Filter" />
+                <input class="btn btn-outline-primary" type="submit" value="Sort/Filter" />
             </div>
         </form>
     </div>
-    
+    <br><hr>
     <table class="table">
       <thead class="thead-inverse">
          <tr>

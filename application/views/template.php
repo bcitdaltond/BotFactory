@@ -18,7 +18,7 @@
         <div id="wrapper">
             <nav class="navbar navbar-default navbar-static-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/home">Apple Robot Factory</a>
+                    <a class="navbar-brand" href="/home">Apple BotFactory</a>
                 </div>
                 <ul class="nav navbar-top-links">
                     {navbuttons}

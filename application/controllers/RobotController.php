@@ -3,21 +3,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class RobotController extends Application
 {
+    // Constructor 
     function __construct()
     {
         parent::__construct();
     }
 
     /**
-     * the home page of robot page
+     * Index page for RobotController
      */
     public function index(){
-        $role = $this->session->userdata('userrole');
-        if ($role == ROLE_GUEST || $role == ROLE_WORKER) redirect('/home');
 
+        $role = $this->session->userdata('userrole');
+
+        // checks the role and redirects to homepage if it's insufficient permissions
+        if ($role == ROLE_GUEST || $role == ROLE_WORKER) redirect('/home');
+        
         $this->data['pagetitle'] = 'Bot Factory - Robots ('. $role . ')';
         
         $this->data['pagebody'] = 'Robot/robots';
+
         $this->render();
     }
 
