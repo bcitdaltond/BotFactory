@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ::selection { background-color: #E13300; color: white; }
 ::-moz-selection { background-color: #E13300; color: white; }
 
@@ -20,8 +21,7 @@ h1 {
 	border-bottom: 1px solid #D0D0D0;
 	font-size: 19px;
 	font-weight: normal;
-	margin: 0 0 14px 0;
-	padding: 14px 15px 10px 15px;
+	padding: 15px 15px 15px 15px;
 }
 
 code {
@@ -39,6 +39,13 @@ code {
 	margin: 0 15px 0 15px;
 }
 
+#home-dashboard {
+  padding: 15px;
+  width: 75%;
+  margin: 0 auto;
+  background-color: white;
+}
+
 p.footer {
 	text-align: right;
 	font-size: 11px;
@@ -49,7 +56,186 @@ p.footer {
 }
 
 #container {
-	margin: 10px;
+	margin: 5%;
 	border: 1px solid #D0D0D0;
 	box-shadow: 0 0 8px #D0D0D0;
 }
+
+#homepage-title{
+	text-align: center;
+}
+
+.homepage-content{
+	margin: 5%;
+}
+
+.navbar-collapse.collapse {
+  display: block!important;
+}
+
+.navbar-nav>li, .navbar-nav {
+  float: left !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: -15px !important;
+}
+
+.navbar-right {
+  float: right!important;
+}
+.partTag1, .partTag2{
+	text-align: center;
+	margin-right: 12%;
+}
+#thePart{
+	margin-bottom: 25px;
+}
+
+caption{
+	margin-left: 45%;
+	font-family: "Arial Black";
+	font-size: medium;
+}
+.checkboxRobot, .checkboxPart{
+	width: 20px;
+	height: 20px;
+}
+.robotSelector, .partSelector{
+	text-align: center;
+	font-size: medium;
+}
+.buttons{
+	text-align: center;
+	margin-top: 8%;
+	margin-bottom: 15%;
+}
+.ship{
+	text-align: center;
+	margin-top: 8%;
+}
+#robotDetail{
+	margin-top: 15%;
+}
+
+=======
+::selection { background-color: #E13300; color: white; }
+::-moz-selection { background-color: #E13300; color: white; }
+
+body {
+	background-color: #fff;
+	margin: 40px;
+	font: 13px/20px normal Helvetica, Arial, sans-serif;
+	color: #4F5155;
+}
+
+a {
+	color: #003399;
+	background-color: transparent;
+	font-weight: normal;
+}
+
+h1 {
+	color: #444;
+	background-color: transparent;
+	border-bottom: 1px solid #D0D0D0;
+	font-size: 19px;
+	font-weight: normal;
+	padding: 15px 15px 15px 15px;
+}
+
+code {
+	font-family: Consolas, Monaco, Courier New, Courier, monospace;
+	font-size: 12px;
+	background-color: #f9f9f9;
+	border: 1px solid #D0D0D0;
+	color: #002166;
+	display: block;
+	margin: 14px 0 14px 0;
+	padding: 12px 10px 12px 10px;
+}
+
+#body {
+	margin: 0 15px 0 15px;
+}
+
+#home-dashboard {
+  padding: 15px;
+  width: 75%;
+  margin: 0 auto;
+  background-color: white;
+}
+
+p.footer {
+	text-align: right;
+	font-size: 11px;
+	border-top: 1px solid #D0D0D0;
+	line-height: 32px;
+	padding: 0 10px 0 10px;
+	margin: 20px 0 0 0;
+}
+
+#container {
+	margin: 5%;
+	border: 1px solid #D0D0D0;
+	box-shadow: 0 0 8px #D0D0D0;
+}
+
+#homepage-title{
+	text-align: center;
+}
+
+.homepage-content{
+	margin: 5%;
+}
+
+.navbar-collapse.collapse {
+  display: block!important;
+}
+
+.navbar-nav>li, .navbar-nav {
+  float: left !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: -15px !important;
+}
+
+.navbar-right {
+  float: right!important;
+}
+.partTag1, .partTag2{
+	text-align: center;
+	margin-right: 12%;
+}
+#thePart{
+	margin-bottom: 25px;
+}
+
+caption{
+	margin-left: 45%;
+	font-family: "Arial Black";
+	font-size: medium;
+}
+.checkboxRobot, .checkboxPart{
+	width: 20px;
+	height: 20px;
+}
+.robotSelector, .partSelector{
+	text-align: center;
+	font-size: medium;
+}
+.buttons{
+	text-align: center;
+	margin-top: 8%;
+	margin-bottom: 15%;
+}
+.ship{
+	text-align: center;
+	margin-top: 8%;
+}
+#robotDetail{
+	margin-top: 15%;
+}
+
+>>>>>>> 54ba26353fe409c8e34ed40f8aea2fb87b078a36

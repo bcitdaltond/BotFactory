@@ -1,0 +1,13 @@
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
+/nbproject/private/
+/tmp/
+/public/ci_sessions/
+.idea
+password.txt
+/public/password.txt
+/application/config/database.php
